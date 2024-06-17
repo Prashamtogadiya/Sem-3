@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        num1 =parseInt(prompt("Enter number 1"))
+        num2 = parseInt(prompt("Enter number 2"))
+        op = prompt("Enter operater")
+        if(op== '+'){
+            sum = num1 + num2
+            document.write(sum)
+        }
+        else if(op== '-'){
+            sub = num1 - num2
+            document.write(sub)
+        }
+        else if(op== '*'){
+            mul = num1 * num2
+            document.write(mul)
+        }
+        else if(op=='/'){
+            if(num2==0){
+                document.write("Can't divide by zero")
+            }
+            else{
+                div = num1 / num2
+                document.write(div)
+            }
+        }
+        else{
+            document.write("Enter correct operater")
+        }
+
+    </script>
+</body>
+</html>

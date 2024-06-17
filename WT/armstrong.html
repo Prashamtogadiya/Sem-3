@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        num1 = parseInt(prompt("Enter number"))
+        sum=0,len=num1.toString().length
+        num2 = num1
+       
+        while(num2!=0){
+
+            sum += Math.pow(num2%10,len)
+            num2=parseInt(num2/10)
+        }
+        if(sum==num1)
+            document.write("Armstrong")
+        else    
+            document.write("Not armstrong")
+    </script>
+</body>
+
+</html>
