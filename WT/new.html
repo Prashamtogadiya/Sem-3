@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #f3f3f3;
+        }
+        .screen {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 20px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+        .btn {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #e6e6e6;
+        }
+        .btn:hover {
+            background-color: #d9d9d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen" id="screen">0</div>
+        <button class="btn" onclick="appendToScreen('7')">7</button>
+        <button class="btn" onclick="appendToScreen('8')">8</button>
+        <button class="btn" onclick="appendToScreen('9')">9</button>
+        <button class="btn" onclick="appendToScreen('+')">+</button><br>
+        <button class="btn" onclick="appendToScreen('4')">4</button>
+        <button class="btn" onclick="appendToScreen('5')">5</button>
+        <button class="btn" onclick="appendToScreen('6')">6</button>
+        <button class="btn" onclick="appendToScreen('-')">-</button><br>
+        <button class="btn" onclick="appendToScreen('1')">1</button>
+        <button class="btn" onclick="appendToScreen('2')">2</button>
+        <button class="btn" onclick="appendToScreen('3')">3</button>
+        <button class="btn" onclick="appendToScreen('*')">*</button><br>
+        <button class="btn" onclick="appendToScreen('0')">0</button>
+        <button class="btn" onclick="appendToScreen('.')">.</button>
+        <button class="btn" onclick="clearScreen()">C</button>
+        <button class="btn" onclick="appendToScreen('/')">/</button><br>
+        <button class="btn" onclick="calculate()">=</button>
+    </div>
+
+    <script>
+        function appendToScreen(value) {
+            document.getElementById('screen').textContent += value;
+        }
+
+        function clearScreen() {
+            document.getElementById('screen').textContent = '0';
+        }
+
+        function calculate() {
+            let expression = document.getElementById('screen').textContent;
+            let result = eval(expression);
+            document.getElementById('screen').textContent = result;
+        }
+    </script>
+</body>
+</html>
