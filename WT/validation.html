@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #50aacd;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background-color: #0f529e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+
+        <label>Email : </label><br>
+        <input type="email" id="input" placeholder="Enter E-Mail" required><br><br>
+
+        <label>Username : </label><br>
+        <input type="text" id="input1" placeholder="Enter username" required><br><br>
+
+        <label>Password :</label><br>
+        <input type="password" id="input2" placeholder="Enter your Password" required><br><br>
+
+        <label>Repeat Password : </label><br>
+        <input type="password" id="input3" placeholder="Confirm Password" required><br><br>
+
+        <label>Age : </label><br>
+        <input type="text" id="input4" min="18" placeholder="Enter Age" required><br><br>
+
+        <label>Enrollment Number : </label><br>
+        <input type="text" id="input5" placeholder="Enter Your Enrollment No." required><br><br>
+
+        <button onclick="validation()">Submit</button>
+    </form>
+
+    <h1 id="answer"></h1>
+    <script>
+        function validation() {
+            email = "^[a-z].*@gmail\.com$"
+            email2 = document.getElementById('input').value
+            Regexp = new RegExp(email)
+            if (Regexp.test(email2)) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "E-Mail Format is Wrong",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+            }
+
+            username = "^[a-zA-Z0-9]{8,}$"
+            username2 = document.getElementById('input1').value
+            Regexp2 = new RegExp(username)
+            if (Regexp2.test(username2)) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid username",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+
+            }
+
+            password = "^(?=.*\d)(?=.*[!@#$%^&*(),.?\":{}|<>])(?=.*[a-zA-Z]).{8,12}$"
+            password2 = document.getElementById('input2').value
+            Regexp3 = new RegExp(password)
+            if (Regexp3.test(password2)) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid Password",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+            }
+
+            repeat = document.getElementById('input3').value
+            if (repeat == password2) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Confirm Password is wrong",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+            }
+
+            age = document.getElementById('input4').value
+            if (age >= 18) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Sorry",
+                    text: "You are not eligible",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+            }
+
+            enrollment = "[0-9]{11}"
+            enrollment2 = document.getElementById('input5').value
+            Regexp4 = new RegExp(enrollment)
+            if (Regexp4.test(enrollment2)) {
+
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Enrollment No. is wrong",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

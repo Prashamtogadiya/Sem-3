@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+  .error { color: red; }
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm" onsubmit="return validateForm()" method="post">
+  
+  <label for="username">Username (min. 8 characters):</label><br>
+  <input type="text" id="username" name="username" minlength="8" requirezd><br><br>
+  
+  <label for="password">Password (8-12 characters, at least 1 digit and 1 special character):</label><br>
+  <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[!@#$%^&*(),.?\":{}|<>])(?=.*[a-zA-Z]).{8,12}$" required><br><br>
+  
+  <label for="repeatPassword">Repeat Password:</label><br>
+  <input type="password" id="repeatPassword" name="repeatPassword" required><br><br>
+  
+  <label for="dob">Date of Birth:</label><br>
+  <input type="date" id="dob" name="dob" max="2006-12-31" required><br><br>
+  
+  <label for="enrollment">Enrollment (11 digits):</label><br>
+  <input type="text" id="enrollment" name="enrollment" pattern="[0-9]{11}" required><br><br>
+  
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br><br>
+  
+  <label for="age">Age (must be greater than 18):</label><br>
+  <input type="number" id="age" name="age" min="19" required><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm() {
+  var password = document.getElementById("password").value;
+  var repeatPassword = document.getElementById("repeatPassword").value;
+  var dob = new Date(document.getElementById("dob").value);
+  var age = calculateAge(dob);
+
+  if (password !== repeatPassword) {
+    alert("Passwords do not match");
+    return false;
+  }
+
+  if (age <= 18) {
+    alert("Age must be greater than 18");
+    return false;
+  }
+
+  return true;
+}
+
+function calculateAge(dob) {
+  var today = new Date();
+  var birthDate = new Date(dob);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+</script>
+
+</body>
+</html>
